@@ -11,10 +11,11 @@ export class AuthController {
   @Public()
   @Post('login')
   signIn(@Body() signInDto: Record<string, any>) {
+    
     return this.authService.signIn(signInDto.username, signInDto.password);
   }
 
-  @UseGuards(AuthGuard)
+   @UseGuards(AuthGuard)
   @Get('profile')
   getProfile(@Request() req) {
     return req.user;
